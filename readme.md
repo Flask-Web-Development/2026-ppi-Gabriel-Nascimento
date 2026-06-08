@@ -1,55 +1,64 @@
 # Projeto Gabriel Nasc
-Ontem eu comi pipoca com sal
-Fiquei todo empanzinado
-Tô mal, mal, mal, mal
-Ontem eu comi pipoca com sal
-Fiquei todo empanzinado
-Tô mal, mal, mal, mal
+Makin' my way downtown, walkin' fast
+Faces pass and I'm homebound
+Starin' blankly ahead, just makin' my way
+Makin' a way through the crowd
 
-Ontem eu comi pipoca, um litro de Coca, depois me dei mal
-Chamaram uma ambulância e me levaram para o hospital
-Chegou lá no hospital, o doutor mandou eu ficar peladão
-No braço, me aplicou um soro e na minha bunda aplicou uma injeção
+And I need you
+And I miss you
+And now I wonder
 
-Na hora que ele aplicou
-A minha barriga roncou
-Dei um peido e caguei a mão do doutor
+If I could fall
+Into the sky
+Do you think time
+Would pass me by?
+'Cause you know I'd walk a thousand miles
+If I could just see you
+Tonight
 
-Ontem eu comi pipoca com sal
-Fiquei todo empanzinado
-Tô mal, mal, mal, mal
-Ontem eu comi pipoca com sal
-Fiquei todo empanzinado
-Tô mal, mal, mal, mal
+It's always times like these when I think of you
+And I wonder if you ever think of me
+'Cause everything's so wrong and I don't belong
+Livin' in your precious memory
 
-Ontem eu comi pipoca com sal
-Fiquei todo empanzinado
-Tô mal, mal, mal, mal
-Ontem eu comi pipoca com sal
-Fiquei todo empanzinado
-Tô mal, mal, mal, mal
+'Cause I'll need you
+And I'll miss you
+And now I wonder
 
-Ontem eu comi pipoca, um litro de Coca, depois me dei mal
-Chamaram uma ambulância e me levaram para o hospital
-Chegou lá no hospital, o doutor mandou eu ficar peladão
-No braço, me aplicou um soro e na minha bunda aplicou uma injeção
+If I could fall
+Into the sky
+Do you think time
+Would pass me by?
+Oh, 'cause you know I'd walk a thousand miles
+If I could just see you
+Tonight
 
-Na hora que ele aplicou
-A minha barriga roncou
-Dei um peido e caguei a mão do doutor
+And I, I don't wanna let you know
+I, I drown in your memory
+I, I don't wanna let this go
+I, I don't
 
-Ontem eu comi pipoca com sal
-Fiquei todo empanzinado
-Tô mal, mal, mal, mal
-Ontem eu comi pipoca com sal
-Fiquei todo empanzinado
-Tô mal, mal, mal, mal
+Makin' my way downtown, walkin' fast
+Faces pass and I'm homebound
+Starin' blankly ahead, just makin' my way
+Makin' a way through the crowd
 
-Ontem eu comi pipoca com sal
-Fiquei todo empanzinado
-Tô mal, mal, mal, mal
-Ontem eu comi pipoca com sal
-Fiquei todo empanzinado
-Tô mal, mal, mal, mal
+And I still need you
+I still miss you
+And now I wonder
 
-Mal, mal, mal
+If I could fall
+Into the sky
+Do you think time
+Would pass us by?
+'Cause you know I'd walk a thousand miles
+If I could just see you, oh, oh
+
+If I could fall
+Into the sky
+Do you think time
+Would pass me by?
+'Cause you know I'd walk a thousand miles
+If I could just see you
+If I could just hold you
+Tonight
