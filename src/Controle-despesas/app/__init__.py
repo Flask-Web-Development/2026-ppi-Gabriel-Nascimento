@@ -21,4 +21,8 @@ def create_app(test_config=None):
     def inicio():
         return 'onte eu comi, pipoca com sal.'
 
+
+    from . import db
+    db.init_app(app)
+
     return app
