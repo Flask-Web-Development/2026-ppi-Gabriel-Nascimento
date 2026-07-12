@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Criar{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+
+    <label for="name">Nome</label>
+    <input name="name" id="name" required>{{ request.form['name'] }}</input>
+    <input type="submit" value="Salvar">
+</form>
+{% endblock %}

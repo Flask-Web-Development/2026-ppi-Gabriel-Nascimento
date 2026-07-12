@@ -7,10 +7,10 @@
 </head>
 
 <nav>
-  <h1>Controle de gastos</h1>
+  <h1>CONTROLE DE GASTOS</h1>
   <ul>
     {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
+      <li><span>olá, {{ g.user['username'] }}!</span>
       <li><a href="{{ url_for('auth.logout') }}">Sair</a>
     {% else %}
       <li><a href="{{ url_for('auth.register') }}">Registrar</a>
@@ -18,13 +18,13 @@
     {% endif %}
   </ul>
 </nav>
-
 <section class="content">
   <header>
     {% block header %}{% endblock %}
   </header>
   {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
+  <div class="flash">{{ message }}</div>
   {% endfor %}
   {% block content %}{% endblock %}
 </section>
+<script src="{{ url_for('static', filename='script.js') }}"></script>

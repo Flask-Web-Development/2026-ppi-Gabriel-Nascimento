@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS user;
 DROP TABLE IF EXISTS expense;
+DROP TABLE IF EXISTS category;
 
 CREATE TABLE user (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -12,7 +13,16 @@ CREATE TABLE expense (
   author_id INTEGER NOT NULL,
   description TEXT NOT NULL,
   amount REAL NOT NULL,
-  category TEXT NOT NULL,
+  category_id INTEGER NOT NULL,
   date TEXT NOT NULL,
-  FOREIGN KEY (author_id) REFERENCES user(id)
+  FOREIGN KEY (author_id) REFERENCES user(id),
+  FOREIGN KEY (category_id) REFERENCES category(id)
+);
+
+CREATE TABLE category (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT UNIQUE NOT NULL,
+  author_id INTEGER NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user(id),
+  UNIQUE (name, author_id)
 );

@@ -73,7 +73,7 @@ nav span, nav a{
   justify-content:space-between;
   align-items:center;
 
-  padding:20px 0;
+  padding:10px 0;
 
   border-bottom:1px solid #1A202F;
 }
@@ -107,7 +107,7 @@ nav span, nav a{
 
 .post{
 
-  padding:20px 0;
+  padding:0px 0;
 }
 
 .post header{
@@ -121,8 +121,6 @@ nav span, nav a{
 
   display:flex;
   flex-direction:column;
-
-  gap:6px;
 }
 
 .title-row{
@@ -159,7 +157,7 @@ nav span, nav a{
 
     font-weight:300;
 
-    color:white;
+    color:rgb(226, 38, 38);
 
     font-size: 1rem;
 }
@@ -224,4 +222,33 @@ input[type="submit"]:hover{
   padding: 1em;
   background: #cae6f6;
   border: 1px solid #377ba8;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  flex-direction: column;
+  background-color: #1A202F;
+  min-width: 165px;
+  border-radius: 8px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px;
+  text-decoration: none;
+  display: flex;
+  gap: 8px;
+}
+
+.dropdown-content a:hover {
+  background-color: #6750A4;
+  border-radius: 8px;
 }

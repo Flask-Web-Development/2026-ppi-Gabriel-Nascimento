@@ -10,11 +10,16 @@
     <label for="description">Descrição</label>
     <textarea name="description" id="description" required>{{ request.form['description'] }}</textarea>
     
-    <label for="category">Categoria</label>
-    <input name="category" id="category"required>{{ request.form['category'] }}</input>
-    
+    <label for="category_id">Categoria</label>
+    <select name="category_id"  required>
+        {% for category in categories %}
+            <option value="{{ category['id'] }}" {% if category['id'] == expense['category_id'] %}selected{% endif %}>
+              {{ category['name'] }}
+            </option>
+        {% endfor %}
+
     <label for="date">Data</label>
-    <input name="date" id="date"required>{{ request.form['date'] }}</input>
+    <input type="date" name="date" id="date"required>{{ request.form['date'] }}</input>
     
     <label for="amount">R$</label>
     <input type="number" step="0.1" min="0" name="amount" id="amount"required>{{ request.form['amount'] }}</input>

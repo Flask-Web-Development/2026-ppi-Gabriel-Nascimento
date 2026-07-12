@@ -27,4 +27,9 @@ def create_app(test_config=None):
     app.register_blueprint(expenses.bp)
     app.add_url_rule('/', endpoint='index')
 
+    @app.template_filter('date_format')
+    def date_format(value):
+        from datetime import datetime
+        return datetime.strptime(value, '%Y-%m-%d').strftime('%d %b %Y')
+
     return app

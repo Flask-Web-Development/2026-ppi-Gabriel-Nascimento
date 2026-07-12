@@ -2,7 +2,7 @@ from flask import (
     Blueprint, flash, g, redirect, render_template, request, url_for, session
 )
 from werkzeug.exceptions import abort
-
+from datetime import datetime
 from app.auth import login_required
 from app.db import get_db
 
@@ -11,43 +11,111 @@ bp = Blueprint('expenses', __name__)
 @bp.route('/')
 def index():
     db = get_db()
+
+    if g.user is None:
+        return redirect(url_for('auth.register'))
+    
     expenses = db.execute(
-        'SELECT e.*, u.*'
-        ' FROM expense e JOIN user u ON e.author_id = u.id'
-        ' ORDER BY date DESC'
+    '''
+    SELECT e.*, u.username, c.name AS category_name
+    FROM expense e
+    JOIN user u ON e.author_id = u.id
+    JOIN category c ON e.category_id = c.id
+    ORDER BY e.date DESC
+    '''
     ).fetchall()
     return render_template('expenses/index.html', expenses=expenses)
+
 
 @bp.route('/create', methods=('GET', 'POST'))
 @login_required
 def create():
+    db = get_db()
+
+    categories = db.execute(
+        '''
+        SELECT id, name
+        FROM category
+        WHERE author_id = ?
+        ORDER BY name
+        ''',
+        (g.user['id'],)
+    ).fetchall()
+
     if request.method == 'POST':
         description = request.form['description']
-        category = request.form['category']
+        category = request.form['category_id']
         date = request.form['date']
         amount = request.form['amount']
-        author_id = session['user_id']
+        author_id = g.user['id']
         error = None
+        
 
         if error is not None:
             flash(error)
+                
         else:
-            db = get_db()
             db.execute(
-                'INSERT INTO expense (description, category, date, amount, author_id)'
-                ' VALUES (?, ?, ?, ?, ?)',
+                '''
+                INSERT INTO expense
+                (description, category_id, date, amount, author_id)
+                VALUES (?, ?, ?, ?, ?)
+                ''',
                 (description, category, date, amount, author_id)
             )
             db.commit()
+            flash('Despesa criada com sucesso.')
             return redirect(url_for('expenses.index'))
 
-    return render_template('expenses/create.html')
+    return render_template(
+        'expenses/create.html', categories=categories
+    )
+
+
+@bp.route('/createCategory', methods=('GET', 'POST'))
+@login_required
+def createcategory():
+    db = get_db()
+
+    if request.method == 'POST':
+        name = request.form['name']
+
+        categories = db.execute(
+            '''
+            SELECT id
+            FROM category
+            WHERE name = ? AND author_id = ?
+            ORDER BY name
+            ''',
+            (name, g.user['id'])
+        ).fetchone()
+        
+        if categories is not None:
+            flash('Categoria já existe.')
+        else:
+            db.execute(
+                '''
+                INSERT INTO category
+                (name, author_id)
+                VALUES (?, ?)
+                ''',
+                (name, g.user['id'])
+            )
+            db.commit()
+            flash('Categoria criada com sucesso.')
+            return redirect(url_for('expenses.index'))
+
+    return render_template('expenses/createCategory.html')
+
 
 def get_expense(id, check_author=True):
     expense = get_db().execute(
-        'SELECT e.*, username'
-        ' FROM expense e JOIN user u ON e.author_id = u.id'
-        ' WHERE e.id = ?',
+        '''
+        SELECT e.*, u.username
+        FROM expense e
+        JOIN user u ON e.author_id = u.id
+        WHERE e.id = ?
+        ''',
         (id,)
     ).fetchone()
 
@@ -62,28 +130,43 @@ def get_expense(id, check_author=True):
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
+    db = get_db()
+
     expense = get_expense(id)
+
+    categories = db.execute(
+        '''
+        SELECT id, name
+        FROM category
+        WHERE author_id = ?
+        ORDER BY name
+        ''',
+        (g.user['id'],)
+    ).fetchall()
 
     if request.method == 'POST':
         description = request.form['description']
-        category = request.form['category']
+        category = request.form['category_id']
         date = request.form['date']
         amount = request.form['amount']
-        error = None
 
-        if error is not None:
-            flash(error)
-        else:
-            db = get_db()
-            db.execute(
-                'UPDATE expense SET description = ?, category = ?, date = ?, amount = ?'
-                ' WHERE id = ?',
-                (description, category, date, amount, id)
-            )
-            db.commit()
-            return redirect(url_for('expenses.index'))
+        db.execute(
+            '''
+            UPDATE expense
+            SET description = ?, category_id = ?, date = ?, amount = ?
+            WHERE id = ?
+            ''',
+            (description, category, date, amount, id)
+        )
+        db.commit()
 
-    return render_template('expenses/update.html', expense=expense)
+        return redirect(url_for('expenses.index'))
+
+    return render_template(
+        'expenses/update.html',
+        expense=expense,
+        categories=categories
+    )
 
 @bp.route('/<int:id>/delete', methods=('POST',))
 @login_required
