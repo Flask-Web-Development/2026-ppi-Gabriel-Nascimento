@@ -14,6 +14,5 @@ CREATE TABLE expense (
   amount REAL NOT NULL,
   category TEXT NOT NULL,
   date TEXT NOT NULL,
-  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (author_id) REFERENCES user(id)
 );
