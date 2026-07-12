@@ -1,23 +1,23 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Gastos{% endblock %}</h1>
+  <h1>{% block title %}Criar{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
 <form method="post">
 
-    <label for="category">Categoria</label>
-    <input name="category" id="category">{{ request.form['category'] }}</input>
-
-    <label for="description">Descrição de gastos</label>
-    <textarea name="description" id="description">{{ request.form['description'] }}</textarea>
+    <label for="description">Descrição</label>
+    <textarea name="description" id="description" required>{{ request.form['description'] }}</textarea>
     
-    <label for="amount">R$</label>
-    <input type="number" name="amount" id="amount">{{ request.form['amount'] }}</input>
+    <label for="category">Categoria</label>
+    <input name="category" id="category"required>{{ request.form['category'] }}</input>
     
     <label for="date">Data</label>
-    <input name="date" id="date">{{ request.form['date'] }}</input>
+    <input name="date" id="date"required>{{ request.form['date'] }}</input>
+    
+<label for="amount">R$</label>
+    <input type="number" step="0.1" min="0" name="amount" id="amount"required>{{ request.form['amount'] }}</input>
     
     <input type="submit" value="Salvar">
   </form>

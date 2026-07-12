@@ -76,7 +76,7 @@ def update(id):
         else:
             db = get_db()
             db.execute(
-                'UPDATE expense SET category = ?, description = ?, amount = ?, date = ?'
+                'UPDATE expense SET description = ?, category = ?, date = ?, amount = ?'
                 ' WHERE id = ?',
                 (description, category, date, amount, id)
             )

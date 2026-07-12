@@ -1,25 +1,50 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Gastos{% endblock %}</h1>
+  <h1>{% block title %}Despesas{% endblock %}</h1>
   {% if g.user %}
-    <a class="action" href="{{ url_for('expenses.create') }}">Nova</a>
+    <a class="action" href="{{ url_for('expenses.create') }}">
+        <span class="material-symbols-outlined">add</span>
+    </a>
   {% endif %}
 {% endblock %}
 
 {% block content %}
   {% for expense in expenses %}
     <article class="post">
+
       <header>
-        <div>
-          <h1>{{ expense['description'] }}</h1>
-          <div class="about">by {{ expense['username'] }}</div>
+
+        <div class="info">
+
+            <div class="title-row">
+                <h1>{{ expense['description'] }}</h1>
+
+                <span class="category">
+                    {{ expense['category'] }}
+                </span>
+            </div>
+
+            <div class="about">
+                {{ expense['date'] }}
+            </div>
+
         </div>
+
         {% if g.user['id'] == expense['author_id'] %}
-          <a class="action" href="{{ url_for('expenses.update', id=expense['id']) }}">Edit</a>
+
+          <a class="action" href="{{ url_for('expenses.update', id=expense['id']) }}">
+
+          <span class="material-symbols-outlined">edit</span>
+
+          </a>
         {% endif %}
+
       </header>
-      <p class="body">{{ expense['amount'] }}</p>
+
+
+      <p class="body">R$ {{ expense['amount'] }}</p>
+
     </article>
     {% if not loop.last %}
       <hr>
