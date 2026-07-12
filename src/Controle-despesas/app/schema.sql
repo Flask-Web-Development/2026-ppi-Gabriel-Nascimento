@@ -11,7 +11,7 @@ CREATE TABLE expense (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   author_id INTEGER NOT NULL,
   description TEXT NOT NULL,
-  amount REAL NOT NULL,
+  amount DECIMAL NOT NULL,
   category TEXT NOT NULL,
   date TEXT NOT NULL,
   FOREIGN KEY (author_id) REFERENCES user(id)

@@ -17,15 +17,14 @@ def create_app(test_config=None):
 
     os.makedirs(app.instance_path, exist_ok=True)
 
-    @app.route('/inicio')
-    def inicio():
-        return 'onte eu comi, pipoca com sal.'
-
-
     from . import db
     db.init_app(app)
 
     from . import auth
     app.register_blueprint(auth.bp)
+
+    from . import expenses
+    app.register_blueprint(expenses.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app
