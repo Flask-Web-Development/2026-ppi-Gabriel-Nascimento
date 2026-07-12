@@ -10,20 +10,23 @@ bp = Blueprint('expenses', __name__)
 
 @bp.route('/')
 def index():
-    db = get_db()
-
     if g.user is None:
         return redirect(url_for('auth.register'))
-    
+
+    db = get_db()
+
     expenses = db.execute(
-    '''
-    SELECT e.*, u.username, c.name AS category_name
-    FROM expense e
-    JOIN user u ON e.author_id = u.id
-    JOIN category c ON e.category_id = c.id
-    ORDER BY e.date DESC
-    '''
+        '''
+        SELECT e.*, u.username, c.name AS category_name
+        FROM expense e
+        JOIN user u ON e.author_id = u.id
+        JOIN category c ON e.category_id = c.id
+        WHERE e.author_id = ?
+        ORDER BY e.date DESC
+        ''',
+        (g.user['id'],)
     ).fetchall()
+
     return render_template('expenses/index.html', expenses=expenses)
 
 
