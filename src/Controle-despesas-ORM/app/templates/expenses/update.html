@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Editar{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+
+    <label for="description">Descrição</label>
+    <textarea name="description" id="description" required>{{ expense.description or request.form['description'] }}</textarea>
+    
+    <label for="category_id">Categoria</label>
+    <select name="category_id"  required>
+        {% for category in categories %}
+            <option value="{{ category.id }}" {% if category.id == expense.category_id %}selected{% endif %}>
+              {{ category.name }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <label for="date">Data</label>
+    <input type="date" name="date" id="date" value="{{ expense.date or request.form['date'] }}" required>
+    
+    <label for="amount">R$</label>
+    <input type="number" step="0.1" min="0" name="amount" id="amount" value="{{ expense.amount or request.form['amount'] }}" required>
+    
+    <input type="submit" value="Salvar">
+  </form>
+  <hr>
+  <form action="{{ url_for('expenses.delete', id=expense.id) }}" method="post">
+    <input class="danger" type="submit" value="Apagar" onclick="return confirm('Tem certeza?');">
+  </form>
+{% endblock %}

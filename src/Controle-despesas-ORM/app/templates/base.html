@@ -1,0 +1,30 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - Flaskr</title>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+</head>
+
+<nav>
+  <h1>CONTROLE DE GASTOS</h1>
+  <ul>
+    {% if g.user %}
+      <li><span>olá, {{ g.user.username }}!</span>
+      <li><a href="{{ url_for('auth.logout') }}">Sair</a>
+    {% else %}
+      <li><a href="{{ url_for('auth.register') }}">Registrar</a>
+      <li><a href="{{ url_for('auth.login') }}">Entrar</a>
+    {% endif %}
+  </ul>
+</nav>
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+  <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
