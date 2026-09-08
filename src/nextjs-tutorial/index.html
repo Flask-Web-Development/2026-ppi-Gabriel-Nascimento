@@ -18,8 +18,22 @@
       import { createRoot } from 'react-dom/client';
  
       const domNode = document.getElementById('app');
+
+      function Header() {
+        return <h1>Develop. Preview. Ship.</h1>;
+      }
+
+      function HomePage() {
+        return (
+          <div>
+            <Header />
+          </div>
+
+         );
+      }
+
       const root = createRoot(domNode);
-      root.render(<h1>Develop. Preview. Ship.</h1>);
+      root.render(<HomePage />);
     </script>
   </body>
 </html>
